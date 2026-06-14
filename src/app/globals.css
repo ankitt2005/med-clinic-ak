@@ -24,3 +24,15 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes ecg-flow {
+  0% { stroke-dashoffset: 240; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.animate-ecg {
+  stroke-dasharray: 120;
+  stroke-dashoffset: 120;
+  animation: ecg-flow 4s linear infinite;
+}
+
