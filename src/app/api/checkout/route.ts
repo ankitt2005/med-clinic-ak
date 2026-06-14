@@ -2,8 +2,6 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-
 
 export async function POST(req: Request) {
   try {
@@ -22,6 +20,8 @@ export async function POST(req: Request) {
     if (!process.env.STRIPE_SECRET_KEY) {
       throw new Error("Stripe secret key is missing in environment variables.");
     }
+
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
     // Create Stripe Checkout Session
     const session = await stripe.checkout.sessions.create({
